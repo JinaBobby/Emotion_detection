@@ -1,5 +1,6 @@
 import re
 from datasets import load_dataset
+import pickle
 
 def clean_text(text):
     text = text.lower()  
@@ -38,7 +39,8 @@ model.fit(X_train_vect, y_train)
 y_pred = model.predict(X_test_vect)
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print(classification_report(y_test, y_pred))
+with open("emotion_model.pkl", "rb") as f:
+    model = pickle.load(f)
 
-
-joblib.dump(model, "emotion_model.pkl")
-joblib.dump(vectorizer, "vectorizer.pkl")
+with open("vectorizer.pkl", "rb") as f:
+    vectorizer = pickle.load(f)
