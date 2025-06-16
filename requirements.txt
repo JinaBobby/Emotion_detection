@@ -1,5 +1,4 @@
 joblib
 datasets
 streamlit
-Docker
 pickle
